@@ -234,7 +234,7 @@ async fn it_fails_to_parse() -> anyhow::Result<()> {
     let err = res.unwrap_err().to_string();
 
     assert_eq!(
-        "error returned from database: near \"SEELCT\": syntax error",
+        "error returned from database: (code: 1) near \"SEELCT\": syntax error",
         err
     );
 
@@ -456,7 +456,7 @@ async fn it_caches_statements() -> anyhow::Result<()> {
     assert_eq!(0, conn.cached_statements_size());
 
     // `Query` is not persistent if `.persistent(false)` is used
-    // explicity.
+    // explicitly.
     let mut conn = new::<Sqlite>().await?;
     for i in 0..2 {
         let row = sqlx::query("SELECT ? AS val")

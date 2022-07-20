@@ -102,9 +102,13 @@ pub enum ColumnType {
 
 #[derive(Debug)]
 pub(crate) struct ColumnDefinition {
+    #[allow(unused)]
     catalog: Bytes,
+    #[allow(unused)]
     schema: Bytes,
+    #[allow(unused)]
     table_alias: Bytes,
+    #[allow(unused)]
     table: Bytes,
     alias: Bytes,
     name: Bytes,
@@ -112,6 +116,7 @@ pub(crate) struct ColumnDefinition {
     pub(crate) max_size: u32,
     pub(crate) r#type: ColumnType,
     pub(crate) flags: ColumnFlags,
+    #[allow(unused)]
     decimals: u8,
 }
 
