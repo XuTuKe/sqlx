@@ -58,6 +58,7 @@ impl<'de> Decode<'de, &'de [MySqlColumn]> for BinaryRow {
                 | ColumnType::Geometry
                 | ColumnType::Bit
                 | ColumnType::Decimal
+                | ColumnType::Unknown
                 | ColumnType::Json
                 | ColumnType::NewDecimal => buf.get_uint_lenenc() as usize,
 

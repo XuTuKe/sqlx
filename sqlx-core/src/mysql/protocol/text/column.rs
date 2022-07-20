@@ -82,6 +82,7 @@ pub enum ColumnType {
     Year = 0x0d,
     VarChar = 0x0f,
     Bit = 0x10,
+	Unknown = 0xf3,
     Json = 0xf5,
     NewDecimal = 0xf6,
     Enum = 0xf7,
@@ -194,6 +195,7 @@ impl ColumnType {
             ColumnType::Set => "SET",
             ColumnType::Decimal | ColumnType::NewDecimal => "DECIMAL",
             ColumnType::Geometry => "GEOMETRY",
+            ColumnType::Unknown => "UNKNOWN",
             ColumnType::Json => "JSON",
 
             ColumnType::String if is_binary => "BINARY",
@@ -239,6 +241,7 @@ impl ColumnType {
             // [internal] 0x11 => ColumnType::Timestamp2,
             // [internal] 0x12 => ColumnType::Datetime2,
             // [internal] 0x13 => ColumnType::Time2,
+			0xf3 => ColumnType::Unknown,
             0xf5 => ColumnType::Json,
             0xf6 => ColumnType::NewDecimal,
             0xf7 => ColumnType::Enum,
